@@ -92,7 +92,7 @@ class Uniform(Agent):
 class UniformSmooth(Agent):
     def __init__(self, horizon, n_arms, eps):
         super().__init__(horizon=horizon, n_arms=n_arms)
-        self.name = "\\uniform_smooth"
+        self.name = "\\uniformsmooth"
         self.a = np.zeros(self.n_arms)
         self.window = np.zeros(self.n_arms)
         self.pulls = np.zeros(self.n_arms)
@@ -145,7 +145,7 @@ class UcbE(Agent):
         :param horizon: horizon of the problem
         """
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\ucbe"
+        self.name = "\\ucbbubeck"
         self.exp_param = exp_param
         self.B = np.inf * np.ones(self.n_arms)
         self.pulls = np.zeros(self.n_arms)
@@ -193,7 +193,7 @@ class UcbSRB(Agent):
         """
         # super class initialization
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\ucbsrb"
+        self.name = "\\ucbeshort"
 
         # mapping arguments
         self.exp_param = exp_param
@@ -302,7 +302,7 @@ class Sr(Agent):
     def __init__(self, horizon, n_arms):
         # class Agent initialization
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\sr"
+        self.name = "\\srbubeck"
 
         # new variables
         self.phases_pulls = self._phases_len_computation()
@@ -411,7 +411,7 @@ class SRSrb(Agent):
     def __init__(self, horizon, n_arms, eps):
         # class Agent initialization
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\srsrb"
+        self.name = "\\succrejectshort"
 
         # new variables
         self.eps = eps
@@ -539,7 +539,7 @@ class Prob1(Agent):
     def __init__(self, horizon, n_arms):
         # class Agent initialization
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\prob1"
+        self.name = "\\probone"
 
         # new variables
         self.log_bar = self._compute_log_bar()
@@ -596,7 +596,7 @@ class Etc(Agent):
     def __init__(self, horizon, n_arms, rho, ub_alpha):
         # class Agent initialization
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\etc"
+        self.name = "\\etccella"
         self.delta = 1/self.horizon
         self.rho = rho
         self.ub_alpha = ub_alpha
@@ -662,7 +662,7 @@ class Etc(Agent):
             if self.last_pull == self.n_arms - 1:
                 tau = self.horizon - self.phase_id*(self.n_arms - 1)
 
-                self.mu_hat = self.beta_hat + (self.alpha_hat / (math.pow(tau, -self.rho)))
+                self.mu_hat = self.beta_hat + (self.alpha_hat / (math.pow(tau, self.rho)))
 
                 for i in range(self.n_arms):
                     mask = np.ones(self.n_arms, dtype=bool)
@@ -676,7 +676,7 @@ class Etc(Agent):
                     self.phase_id += 1
         else:
             tau = self.horizon - self.pulls[arm]*(self.n_arms - 1)
-            self.mu_hat[arm] = self.beta_hat[arm] + (self.alpha_hat[arm] / (math.pow(tau, -self.rho)))
+            self.mu_hat[arm] = self.beta_hat[arm] + (self.alpha_hat[arm] / (math.pow(tau, self.rho)))
 
     def reset(self):
         super().reset()
@@ -714,7 +714,7 @@ class Etc(Agent):
 class RestSure(Agent):
     def __init__(self, n_arms, horizon, ub_alpha, rho):
         super().__init__(n_arms=n_arms, horizon=horizon)
-        self.name = "\\restsure"
+        self.name = "\\restsurecella"
         self.delta = 1 / self.horizon
         self.ub_alpha = ub_alpha
         self.rho = rho
@@ -772,7 +772,7 @@ class RestSure(Agent):
         self.alpha_hat[arm] = (h * (self.x_hat[arm] - self.x_tilde[arm])) / (self.harmonic_pulls_b[arm] - self.harmonic_pulls_a[arm]) if h != 0 else 0
         self.beta_hat[arm] = self.x_hat[arm] - self.harmonic_pulls_b[arm] * (self.alpha_hat[arm] / h) if h != 0 else 0
 
-        tau = self.horizon + self.phase_id - self.t - 1
+        tau = self.horizon + self.phase_id - self.t
         if self.exploration_phase and self.last_pull == self.A[len(self.A) - 1]:
             # check the part w.h.p.
             self.mu_hat = self.beta_hat + (self.alpha_hat / (math.pow(tau, self.rho)))
