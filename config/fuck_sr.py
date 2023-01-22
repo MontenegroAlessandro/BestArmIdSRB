@@ -3,9 +3,10 @@ import json
 from oracle import *
 
 # arms
-f1 = lambda x: .0025 * x if .0025 * x < 1 else 1
-f2 = lambda x: .47 * (1 - 10 / (10 + x))
-arms = [f1, f2]
+f1 = lambda x : .0025*x if .0025*x < 1 else 1
+f2 = lambda x : .47 * (1 - 10/(10+x))
+f3 = lambda x : .004*x if .004*x < .7 else .7
+arms = [f1, f2, f3]
 
 # common stuff
 path = 'experiments'
@@ -14,7 +15,7 @@ horizon = 3000
 n_trials = 100
 sigma = 0.01
 eps = .25
-convergence_points = [1, .47]
+convergence_points = [1, .47, .7]
 
 # compose the dictionary for the Agent Uniform
 param_agent_unif = dict(

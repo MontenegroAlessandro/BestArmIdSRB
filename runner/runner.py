@@ -96,7 +96,7 @@ class Runner:
         return scores, pulled_arms, recommendation, estimators
 
     def save_output(self, config_name):
-        name = self.log_path + "/" + "experiment_" + str(config_name) + "_" + \
-               datetime.now().strftime('_%Y%m%d__%H_%M_%S') + ".json"
+        # name = self.log_path + "/" + "experiment_" + str(config_name) + "_" + datetime.now().strftime('_%Y%m%d__%H_%M_%S') + ".json"
+        name = self.log_path + "/" + config_name + ".json"
         with io.open(name, 'w', encoding='utf-8') as f:
             f.write(json.dumps(self.results, ensure_ascii=False, indent=4))
