@@ -1,3 +1,3 @@
 # BAISRB
  
-Framework for some (:)) experiments.
+Framework for some experiments.
