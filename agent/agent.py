@@ -701,7 +701,7 @@ class Etc(Agent):
         return self.mu_hat
 
     def get_recommendation(self):
-        return self.i_out
+        return self.i_out if self.i_out is not None else np.argmin(self.mu_hat)
 
     def _compute_cb(self, tau):
         first_term = (10 * math.pow(math.sqrt(self.ub_alpha) + 1, 2)) / (self.rho * (1 - self.rho))
@@ -846,7 +846,7 @@ class RestSure(Agent):
         return self.mu_hat
 
     def get_recommendation(self):
-        return self.i_out
+        return self.i_out if self.i_out is not None else np.argmin(self.mu_hat)
 
     def _compute_cb(self, tau):
         first_term = (10 * math.pow(math.sqrt(self.ub_alpha) + 1, 2)) / (self.rho * (1 - self.rho))
