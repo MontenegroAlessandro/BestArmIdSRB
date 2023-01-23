@@ -1,0 +1,17 @@
+{
+    "horizon": 3000,
+    "n_trials": 100,
+    "shrink": 0.02,
+    "env": {
+        "horizon": 3000,
+        "actions": null,
+        "noise": 0.01
+    },
+    "agent_ucb_srb": {
+        "n_arms": 4,
+        "exp_param": 177.20553511106868,
+        "horizon": 3000,
+        "eps": 0.25,
+        "sigma": 0.01
+    }
+}

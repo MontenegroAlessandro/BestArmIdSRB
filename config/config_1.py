@@ -1,22 +1,23 @@
 # Configuration for UCB-SRB
-import io
+import io, json, sys
 import json
 from oracle import OracleUCBSrb, OracleUCBe, OracleSR
 
 # arms
-f1 = lambda x: 1 - 40/(40+x)
+f1 = lambda x: 1 - 37/(37+x)
 f2 = lambda x: .88*(1 - 10/(10+x))
-f3 = lambda x: .7*(1 - 10/(10+x))
-f4 = lambda x: .5*(1 - 20/(20+x))
-arms = [f1, f2, f3, f4]
+f3 = lambda x: .78*(1 - 1/(1+x))
+f4 = lambda x: .7*(1 - 10/(10+x))
+f5 = lambda x: .5*(1 - 20/(20+x))
+arms = [f1, f2, f3, f4, f5]
 
 # common stuff
 path = 'experiments'
-horizon = 3000
+horizon = int(sys.argv[1])
 n_trials = 100
-sigma = 0.01
+sigma = float(sys.argv[2])
 eps = .25
-convergence_points = [1, .88, .7, .5]
+convergence_points = [1, .88, .78, .7, .5]
 
 # compose the dictionary for the Agent Uniform
 param_agent_unif = dict(
