@@ -20,7 +20,7 @@ class OracleUCBSrb:
         self.gaps_inf = self.compute_gaps_inf()
         self.phi = self.compute_phi()
         self.optimal_a = self.compute_exploration_parameter()
-        self.theoretical_horizon = self.compute_theoretical_horizon()
+        # self.theoretical_horizon = self.compute_theoretical_horizon()
         self.error_ub = self.compute_error_ub()
 
     def compute_exploration_parameter(self):
@@ -152,7 +152,7 @@ class OracleSR:
         self.gaps = self.compute_gaps()
         self.gaps_inf = self.compute_gaps_inf()
         self.log_bar = self.compute_log_bar()
-        self.theoretical_horizon = self.compute_theoretical_horizon()
+        # self.theoretical_horizon = self.compute_theoretical_horizon()
         self.h_2 = self.compute_h_2()
         self.error_ub = 0.5 * len(self.arms) * (len(self.arms)-1) * math.exp(-self.eps/(8 * math.pow(self.sigma, 2)) * (self.horizon-len(self.arms))/(self.log_bar*self.h_2))
         self.error_bubeck = 0.5 * len(self.arms) * (len(self.arms)-1)*math.exp(-(self.horizon - len(self.arms))/(self.log_bar*self.h_2))

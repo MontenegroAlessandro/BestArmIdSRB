@@ -1,5 +1,4 @@
-import io
-import json
+import io, sys, json
 from oracle import *
 
 # arms
@@ -11,7 +10,7 @@ arms = [f1, f2, f3]
 # common stuff
 path = 'experiments'
 # from 600 to 800 wins sr-srb
-horizon = 3000
+horizon = int(sys.argv[1])
 n_trials = 100
 sigma = 0.01
 eps = .25
@@ -40,7 +39,7 @@ param_agent_ucb = dict(
 
 # compose the dictionary for the Agent UCB_SRB
 oracle_ucb_srb = OracleUCBSrb(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                              beta=2)
+                              beta=1.001)
 param_agent_ucb_srb = dict(
     n_arms=len(arms),
     exp_param=oracle_ucb_srb.optimal_a,
@@ -57,7 +56,7 @@ param_agent_sr = dict(
 
 # compose the dictionary for the Agent SR_SRB
 oracle_sr_srb = OracleSR(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                         beta=2)
+                         beta=1.001)
 param_agent_sr_srb = dict(
     n_arms=len(arms),
     horizon=horizon,
@@ -82,7 +81,7 @@ param_agent_etc = dict(
 param_agent_rest_sure = dict(
     n_arms=len(arms),
     horizon=horizon,
-    rho=.8,
+    rho=.98,
     ub_alpha=1
 )
 
@@ -113,6 +112,7 @@ param = dict(
 with io.open(f'fuck_sr.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(param, ensure_ascii=False, indent=4))
 
-oracle_agent_ucb_e.represent()
+'''oracle_agent_ucb_e.represent()
 oracle_ucb_srb.represent()
 oracle_sr_srb.represent()
+'''

@@ -95,7 +95,7 @@ runner = Runner(
     horizon=param['horizon'],
     n_actions=len(arms),
     actions=arms,
-    log_path="experiments"
+    log_path="experiments/exp0005"
 )
 
 print("\n################# T = " + str(param["horizon"]) + " #################")

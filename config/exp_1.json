@@ -4,7 +4,7 @@
     "env": {
         "horizon": 3200,
         "actions": null,
-        "noise": 0.5
+        "noise": 0.005
     },
     "agent_unif": {
         "n_arms": 5,
@@ -22,10 +22,10 @@
     },
     "agent_ucb_srb": {
         "n_arms": 5,
-        "exp_param": 2.648803071969013,
+        "exp_param": 604.1987271913829,
         "horizon": 3200,
         "eps": 0.25,
-        "sigma": 0.5
+        "sigma": 0.005
     },
     "agent_sr": {
         "n_arms": 5,

@@ -1,0 +1,44 @@
+{
+    "horizon": 3200,
+    "n_trials": 100,
+    "env": {
+        "horizon": 3200,
+        "actions": null,
+        "noise": 0.01
+    },
+    "agent_ucb_srb_1": {
+        "n_arms": 5,
+        "exp_param": 3.0209936359569145,
+        "horizon": 3200,
+        "eps": 0.25,
+        "sigma": 0.01
+    },
+    "agent_ucb_srb_2": {
+        "n_arms": 5,
+        "exp_param": 15.104968179784573,
+        "horizon": 3200,
+        "eps": 0.25,
+        "sigma": 0.01
+    },
+    "agent_ucb_srb_3": {
+        "n_arms": 5,
+        "exp_param": 151.04968179784572,
+        "horizon": 3200,
+        "eps": 0.25,
+        "sigma": 0.01
+    },
+    "agent_ucb_srb_4": {
+        "n_arms": 5,
+        "exp_param": 1510.4968179784573,
+        "horizon": 3200,
+        "eps": 0.25,
+        "sigma": 0.01
+    },
+    "agent_ucb_srb_5": {
+        "n_arms": 5,
+        "exp_param": 7552.484089892286,
+        "horizon": 3200,
+        "eps": 0.25,
+        "sigma": 0.01
+    }
+}

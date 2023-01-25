@@ -12,7 +12,6 @@ f5 = lambda x: .5*(1 - 20/(20+x))
 arms = [f1, f2, f3, f4, f5]
 
 # common stuff
-path = 'experiments'
 horizon = int(sys.argv[1])
 n_trials = 100
 sigma = float(sys.argv[2])
@@ -42,7 +41,7 @@ param_agent_ucb = dict(
 
 # compose the dictionary for the Agent UCB_SRB
 oracle_ucb_srb = OracleUCBSrb(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                              beta=2)
+                              beta=1.3)
 param_agent_ucb_srb = dict(
     n_arms=len(arms),
     exp_param=oracle_ucb_srb.optimal_a,
@@ -59,7 +58,7 @@ param_agent_sr = dict(
 
 # compose the dictionary for the Agent SR_SRB
 oracle_sr_srb = OracleSR(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                              beta=2)
+                              beta=1.3)
 param_agent_sr_srb = dict(
     n_arms=len(arms),
     horizon=horizon,
