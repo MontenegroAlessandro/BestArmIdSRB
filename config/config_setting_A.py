@@ -1,20 +1,22 @@
-import io, sys, json
-from oracle import *
+# Configuration for UCB-SRB
+import io, json, sys
+import json
+from oracle import OracleUCBSrb, OracleUCBe, OracleSR
 
 # arms
-f1 = lambda x : .0025*x if .0025*x < 1 else 1
-f2 = lambda x : .47 * (1 - 10/(10+x))
-f3 = lambda x : .004*x if .004*x < .7 else .7
-arms = [f1, f2, f3]
+f1 = lambda x: 1 - 37/(37+x)
+f2 = lambda x: .88*(1 - 10/(10+x))
+f3 = lambda x: .78*(1 - 1/(1+x))
+f4 = lambda x: .7*(1 - 10/(10+x))
+f5 = lambda x: .5*(1 - 20/(20+x))
+arms = [f1, f2, f3, f4, f5]
 
 # common stuff
-path = 'experiments'
-# from 600 to 800 wins sr-srb
 horizon = int(sys.argv[1])
 n_trials = 100
-sigma = 0.01
+sigma = float(sys.argv[2])
 eps = .25
-convergence_points = [1, .47, .7]
+convergence_points = [1, .88, .78, .7, .5]
 
 # compose the dictionary for the Agent Uniform
 param_agent_unif = dict(
@@ -39,7 +41,7 @@ param_agent_ucb = dict(
 
 # compose the dictionary for the Agent UCB_SRB
 oracle_ucb_srb = OracleUCBSrb(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                              beta=1.001)
+                              beta=1.3)
 param_agent_ucb_srb = dict(
     n_arms=len(arms),
     exp_param=oracle_ucb_srb.optimal_a,
@@ -56,7 +58,7 @@ param_agent_sr = dict(
 
 # compose the dictionary for the Agent SR_SRB
 oracle_sr_srb = OracleSR(arms=arms, convergence_points=convergence_points, eps=eps, horizon=horizon, sigma=sigma,
-                         beta=1.001)
+                              beta=1.3)
 param_agent_sr_srb = dict(
     n_arms=len(arms),
     horizon=horizon,
@@ -73,7 +75,7 @@ param_agent_prob = dict(
 param_agent_etc = dict(
     n_arms=len(arms),
     horizon=horizon,
-    rho=.98,
+    rho=.8,
     ub_alpha=1
 )
 
@@ -81,7 +83,7 @@ param_agent_etc = dict(
 param_agent_rest_sure = dict(
     n_arms=len(arms),
     horizon=horizon,
-    rho=.98,
+    rho=.8,
     ub_alpha=1
 )
 
@@ -109,10 +111,5 @@ param = dict(
 )
 
 # write the JSON file
-with io.open(f'fuck_sr.json', 'w', encoding='utf-8') as f:
+with io.open(f'config_setting_A.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(param, ensure_ascii=False, indent=4))
-
-'''oracle_agent_ucb_e.represent()
-oracle_ucb_srb.represent()
-oracle_sr_srb.represent()
-'''

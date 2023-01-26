@@ -1,55 +1,55 @@
 {
-    "horizon": 3200,
+    "horizon": 150,
     "n_trials": 100,
     "env": {
-        "horizon": 3200,
+        "horizon": 150,
         "actions": null,
         "noise": 0.01
     },
     "agent_unif": {
         "n_arms": 3,
-        "horizon": 3200
+        "horizon": 150
     },
     "agent_unif_smooth": {
-        "horizon": 3200,
+        "horizon": 150,
         "n_arms": 3,
         "eps": 0.25
     },
     "agent_ucb": {
         "n_arms": 3,
-        "horizon": 3200,
-        "exp_param": 151.52971379473428
+        "horizon": 150,
+        "exp_param": 1.7266392702312139
     },
     "agent_ucb_srb": {
         "n_arms": 3,
-        "exp_param": 117.35820591997471,
-        "horizon": 3200,
+        "exp_param": 131.8282472214633,
+        "horizon": 150,
         "eps": 0.25,
         "sigma": 0.01
     },
     "agent_sr": {
         "n_arms": 3,
-        "horizon": 3200
+        "horizon": 150
     },
     "agent_sr_srb": {
         "n_arms": 3,
-        "horizon": 3200,
+        "horizon": 150,
         "eps": 0.25
     },
     "agent_prob": {
         "n_arms": 3,
-        "horizon": 3200
+        "horizon": 150
     },
     "agent_etc": {
         "n_arms": 3,
-        "horizon": 3200,
-        "rho": 0.98,
+        "horizon": 150,
+        "rho": 0.8,
         "ub_alpha": 1
     },
     "agent_rest_sure": {
         "n_arms": 3,
-        "horizon": 3200,
-        "rho": 0.98,
+        "horizon": 150,
+        "rho": 0.8,
         "ub_alpha": 1
     }
 }

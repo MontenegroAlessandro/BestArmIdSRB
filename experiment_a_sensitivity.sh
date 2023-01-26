@@ -2,7 +2,7 @@
 for ((i=100; i<=250; i+=5))
 do
   cd config
-  python sens_ucb.py $i
+  python config_sensitivity_exploration_parameter.py $i
   cd ..
-  python exp_sens_ucb_srb.py
+  python experiment_a_sensitivity.py
 done

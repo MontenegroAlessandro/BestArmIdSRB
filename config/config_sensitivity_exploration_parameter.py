@@ -81,7 +81,5 @@ param = dict(
 )
 
 # write the JSON file
-with io.open(f'exp_sens_a.json', 'w', encoding='utf-8') as f:
+with io.open(f'config_sensitivity_exploration_parameter.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(param, ensure_ascii=False, indent=4))
-
-# oracle_ucb_srb.represent()

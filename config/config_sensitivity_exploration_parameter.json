@@ -1,43 +1,43 @@
 {
-    "horizon": 250,
+    "horizon": 110,
     "n_trials": 1000,
     "env": {
-        "horizon": 250,
+        "horizon": 110,
         "actions": null,
         "noise": 0.01
     },
     "agent_ucb_srb_1": {
         "n_arms": 5,
-        "exp_param": 4.366266948730334,
-        "horizon": 250,
+        "exp_param": 4.448243295241129,
+        "horizon": 110,
         "eps": 0.25,
         "sigma": 0.01
     },
     "agent_ucb_srb_2": {
         "n_arms": 5,
-        "exp_param": 21.831334743651666,
-        "horizon": 250,
+        "exp_param": 22.241216476205647,
+        "horizon": 110,
         "eps": 0.25,
         "sigma": 0.01
     },
     "agent_ucb_srb_3": {
         "n_arms": 5,
-        "exp_param": 218.31334743651666,
-        "horizon": 250,
+        "exp_param": 222.41216476205645,
+        "horizon": 110,
         "eps": 0.25,
         "sigma": 0.01
     },
     "agent_ucb_srb_4": {
         "n_arms": 5,
-        "exp_param": 2183.133474365167,
-        "horizon": 250,
+        "exp_param": 2224.1216476205645,
+        "horizon": 110,
         "eps": 0.25,
         "sigma": 0.01
     },
     "agent_ucb_srb_5": {
         "n_arms": 5,
-        "exp_param": 10915.667371825833,
-        "horizon": 250,
+        "exp_param": 11120.608238102823,
+        "horizon": 110,
         "eps": 0.25,
         "sigma": 0.01
     }

@@ -61,43 +61,7 @@ class SRBEnvironment:
         # initialize the time counter
         self.t = 0
 
-
-# Class implementing the AutoRL environment
-class AutoRLEnvironment:
-    def __init__(self, horizon, actions):
-        assert horizon > 0, "Error in horizon"
-
-        self.horizon = horizon
-        self.actions = actions
-
-        self.n = len(self.actions)
-        self.state = np.zeros(self.n)
-        self.t = 0
-        self.reset(0)
-
-    def step(self, action):
-        # check the action id
-        assert 0 <= action < self.n, "Error in action id"
-
-        # sample the output from the right bandit
-        out = self.actions[action](self.state[action])
-
-        # update the counter for the pulled arm
-        self.state[action] += 1
-
-        # increment the time counter
-        self.t += 1
-
-        return out
-
-    def reset(self, seed):
-        # initialize the state vector
-        self.state = np.zeros(self.n)
-
-        # initialize the time counter
-        self.t = 0
-
-class IMDB:
+class IMDBEnvironment:
     def __init__(self, horizon):
         self.horizon = horizon
         base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'

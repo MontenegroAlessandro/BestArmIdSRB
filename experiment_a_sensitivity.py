@@ -12,7 +12,7 @@ f5 = lambda x: .5 * (1 - 20 / (20 + x))
 arms = [f1, f2, f3, f4, f5]
 
 # load parameters
-config_name = "exp_sens_a"
+config_name = "config_sensitivity_exploration_parameter"
 with open('config/' + config_name + '.json') as json_file:
     param = json.load(json_file)
     param_agent_ucb_srb_1 = deepcopy(param['agent_ucb_srb_1'])

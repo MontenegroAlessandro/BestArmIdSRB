@@ -2,38 +2,25 @@ import io, json, sys
 import json
 import numpy as np
 from oracle import OracleUCBSrb, OracleUCBe
-import matplotlib.pyplot as plt
 
-arms_dict = dict()
-config_name = "../environment/autorl_arms/"
-with open(config_name + 'ddpg' + '.json') as json_file:
-    arms_dict[0] = json.load(json_file)["ddpg"]
+base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'
+names = ['NN112', 'NN1', 'NN2', 'NN22', 'NN222', 'OGD', 'LR']
+curves = [np.load(base_path + i) for i in names]
 
-with open(config_name + 'sac' + '.json') as json_file:
-    arms_dict[1] = json.load(json_file)["sac"]
-
-#with open(config_name + 'ppo' + '.json') as json_file:
-#    arms_dict[0] = json.load(json_file)["ppo"]
-
-# normalize values in 0-1
-max_rew = 0
-min_rew = -140
-arms_dict[0] = [((rew - min_rew) / (max_rew - min_rew)) for rew in arms_dict[0]]
-arms_dict[1] = [((rew - min_rew) / (max_rew - min_rew)) for rew in arms_dict[1]]
-# arms_dict[2] = [((rew - min_rew) / (max_rew - min_rew)) for rew in arms_dict[2]]
-
-f1 = lambda x: arms_dict[0][int(x)] if x < len(arms_dict[0]) else arms_dict[0][-1]
-f2 = lambda x: arms_dict[1][int(x)] if x < len(arms_dict[1]) else arms_dict[1][-1]
-#f3 = lambda x: arms_dict[2][int(x)] if x < len(arms_dict[2]) else arms_dict[2][-1]
-arms = [f1, f2]
+f1 = lambda x: curves[0][int(x)] if x < len(curves[0]) else curves[0][-1]
+f2 = lambda x: curves[1][int(x)] if x < len(curves[1]) else curves[1][-1]
+f3 = lambda x: curves[2][int(x)] if x < len(curves[2]) else curves[2][-1]
+f4 = lambda x: curves[3][int(x)] if x < len(curves[3]) else curves[3][-1]
+f5 = lambda x: curves[4][int(x)] if x < len(curves[4]) else curves[4][-1]
+f6 = lambda x: curves[5][int(x)] if x < len(curves[5]) else curves[5][-1]
+f7 = lambda x: curves[6][int(x)] if x < len(curves[6]) else curves[6][-1]
+arms = [f1, f2, f3, f4, f5, f6, f7]
 
 horizon = int(sys.argv[1])
-n_trials = 100
-# sigma = 0.2
+n_trials = 1
 sigma = float(sys.argv[2])
-# eps = .4
 eps = float(sys.argv[3])
-convergence_points = [0.8993156172383346, 0.8935319944176193]
+convergence_points = [1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.5]
 n_arms = len(arms)
 
 # compose the dictionary for the Agent Uniform
@@ -105,8 +92,7 @@ param_agent_rest_sure = dict(
 
 # Dictionary for the Environment
 param_env = dict(
-    horizon=horizon,
-    actions=None
+    horizon=horizon
 )
 
 # Dictionary final
@@ -126,5 +112,5 @@ param = dict(
 )
 
 # write the JSON file
-with io.open(f'autorl.json', 'w', encoding='utf-8') as f:
+with io.open(f'config_imdb.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(param, ensure_ascii=False, indent=4))
