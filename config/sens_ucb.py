@@ -13,7 +13,7 @@ arms = [f1, f2, f3, f4, f5]
 
 # common stuff
 horizon = int(sys.argv[1])
-n_trials = 100
+n_trials = 1000
 sigma = 0.01
 eps = .25
 convergence_points = [1, .88, .78, .7, .5]
@@ -84,4 +84,4 @@ param = dict(
 with io.open(f'exp_sens_a.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(param, ensure_ascii=False, indent=4))
 
-oracle_ucb_srb.represent()
+# oracle_ucb_srb.represent()

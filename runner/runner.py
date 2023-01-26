@@ -5,7 +5,7 @@ which it is acting on.
 """
 # Libraries
 import numpy as np
-import io
+import io, os, errno
 import json
 from datetime import datetime
 from tqdm.auto import tqdm
@@ -98,5 +98,13 @@ class Runner:
     def save_output(self, config_name):
         # name = self.log_path + "/" + "experiment_" + str(config_name) + "_" + datetime.now().strftime('_%Y%m%d__%H_%M_%S') + ".json"
         name = self.log_path + "/" + config_name + ".json"
+
+        if not os.path.exists(os.path.dirname(name)):
+            try:
+                os.makedirs(os.path.dirname(name))
+            except OSError as exc:  # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
+
         with io.open(name, 'w', encoding='utf-8') as f:
             f.write(json.dumps(self.results, ensure_ascii=False, indent=4))

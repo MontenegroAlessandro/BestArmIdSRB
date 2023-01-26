@@ -50,7 +50,7 @@ runner = Runner(
     horizon=param['horizon'],
     n_actions=len(arms),
     actions=arms,
-    log_path="experiments/exp_sens_a"
+    log_path="experiments/exp_sens_a_detailed"
 )
 
 print("\n################# T = " + str(param["horizon"]) + " #################")
