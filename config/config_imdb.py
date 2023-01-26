@@ -3,7 +3,8 @@ import json
 import numpy as np
 from oracle import OracleUCBSrb, OracleUCBe
 
-base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'
+# base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'
+base_path = '../environment/imdb/'
 names = ['NN112', 'NN1', 'NN2', 'NN22', 'NN222', 'OGD', 'LR']
 curves = [np.load(base_path + i) for i in names]
 

@@ -3,7 +3,8 @@ from environment.environment import IMDBEnvironment
 from agent.agent import *
 from runner.runner import Runner
 
-base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'
+# base_path = '/Users/ale/Desktop/BAISRB/environment/imdb/'
+base_path = 'environment/imdb/'
 names = ['NN112', 'NN1', 'NN2', 'NN22', 'NN222', 'OGD', 'LR']
 curves = [np.load(base_path + i) for i in names]
 
@@ -70,5 +71,5 @@ for agent in agents:
 
 # save the output
 name = str(param["horizon"])
-runner.save_output(name)
+# runner.save_output(name)
 print("##############################################################")
