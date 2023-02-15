@@ -264,7 +264,7 @@ class UcbSRB(Agent):
 
         self.mu_check[arm] = (1 / h) * (a + (self.horizon * (a - b) / h) - ((c - d) / h)) if h > 0 else 0
         self.beta_check[arm] = self.sigma * (self.horizon - n + h - 1) * math.sqrt(
-            (10 * self.exp_param) / (math.pow(h, 3))) if h > 0 else 0
+            (self.exp_param) / (math.pow(h, 3))) if h > 0 else 0
         self.upper_bound[arm] = self.mu_check[arm] + self.beta_check[arm] if h > 0 else 0
 
         # check if the warmup phase is over
